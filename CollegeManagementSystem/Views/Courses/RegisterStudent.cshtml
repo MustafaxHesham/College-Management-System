@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Student>
+
+@if (string.IsNullOrEmpty(ViewBag.Id) || Model != null)
+{
+    <h1 class="text-info text-center mb-3">Register Student for course: @ViewBag.courseName</h1>
+    @foreach(Student student in Model) {
+        int courseID = int.Parse(ViewBag.Id);
+        if (student.Courses.Find(c => c.CourseId == courseID) == null)
+        {
+        <div class="col-10 bg-gradient mb-3">
+            <div class="p-2 bg-black text-light">@student.Name </div>
+            <div class="p-2 bg-black text-light">@student.Id </div>
+                        <form method="post" asp-action="RegisterStudent" asp-controller="Courses" asp-route-cid="@int.Parse(@ViewBag.Id)" asp-route-sid="@student.Id">
+                <button type="submit" class="btn btn-primary">Register Student</button>
+            </form>
+        </div>            
+        }
+    }    
+}
+else {
+    <h1 class="text-danger text-center">No Students available to register to that course</h1>
+}
+<a asp-action="Index" asp-controller="Courses" class="btn btn-outline-light">
+    Back To Courses List
+</a>

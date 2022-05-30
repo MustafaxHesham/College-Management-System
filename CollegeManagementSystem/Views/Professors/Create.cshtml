@@ -1,0 +1,44 @@
+﻿@model Professor
+<form asp-action="Create" asp-controller="Professors" method="post" class="col-8" enctype="multipart/form-data">
+    <div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    </div>
+
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control bg-dark text-light"/>
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="SSN"></label>
+        <input asp-for="SSN" class="form-control bg-dark text-light"/>
+        <span asp-validation-for="SSN" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Age"></label>
+        <input asp-for="Age" class="form-control bg-dark text-light"/>
+        <span asp-validation-for="Age" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Salary"></label>
+        <input asp-for="Salary" class="form-control bg-dark text-light"/>
+        <span asp-validation-for="Salary" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Specialization"></label>
+        <input asp-for="Specialization" class="form-control bg-dark text-light"/>
+        <span asp-validation-for="Specialization" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="imageUrl"></label>
+        <input type="file" accept=".jpg,.jfif,.png" name="image" id="image" class="form-control bg-dark text-light"/>
+    </div>
+
+    <button type="submit" class="btn btn-success mt-3">Create Professor Account</button>
+</form>
+    <a asp-action="Index" asp-controller="Professors" class="btn btn-light mt-3">Back to Professors List</a>

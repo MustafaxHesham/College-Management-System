@@ -1,0 +1,37 @@
+﻿@model Student
+@{
+    ViewData["Title"] = "Delete Student";
+}
+
+@if (Model != null) {
+    <dl>
+            <dt>@Html.DisplayNameFor(s => s.Id)</dt>
+            <dd>@Html.DisplayFor(s => s.Id)</dd>
+
+            <dt>@Html.DisplayNameFor(s => s.Name)</dt>
+            <dd>@Html.DisplayFor(s => s.Name)</dd>
+
+            <dt>@Html.DisplayNameFor(s => s.SSN)</dt>
+            <dd>@Html.DisplayFor(s => s.SSN)</dd>
+
+            <dt>@Html.DisplayNameFor(s => s.Age)</dt>
+            <dd>@Html.DisplayFor(s => s.Age)</dd>
+
+            <dt>@Html.DisplayNameFor(s => s.imageUrl)</dt>
+            <dd>
+                <img src="@Html.DisplayFor(s => s.imageUrl)" />
+            </dd>
+
+            <form method="post" asp-controller="Students" asp-action="Delete" asp-route-id="@Model.Id" >
+                <input type="hidden" asp-for="Id" />
+                <button type="submit" class="btn btn-danger">Delete Student</button>
+            </form>
+
+            <a asp-action="Index" asp-controller="Students" class="btn btn-outline-light">
+                Back To Students List
+            </a>
+    </dl>
+}
+else {
+    <h1 class="text-danger text-center">Student Not Found :(</h1>
+}

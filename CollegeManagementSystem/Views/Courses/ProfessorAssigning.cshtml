@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Professor>
+
+@if (string.IsNullOrEmpty(ViewBag.Id) || Model != null)
+{
+    <h1 class="text-info text-center mb-3">Assigning professor for course: @ViewBag.courseName</h1>
+    @foreach(Professor professor in Model) {
+        int courseID = int.Parse(ViewBag.Id);
+        if (professor.Courses.Find(c => c.CourseId == courseID) == null)
+        {
+        <div class="col-10 bg-gradient mb-3">
+            <div class="p-2 bg-black text-light">@professor.Name </div>
+            <div class="p-2 bg-black text-light">@professor.Specialization </div>
+                        <form method="post" asp-action="AssignProfessor" asp-controller="Courses" asp-route-courseId="@int.Parse(@ViewBag.Id)" asp-route-profID="@professor.Id">
+                <button type="submit" class="btn btn-primary">Assign Instructor</button>
+            </form>
+        </div>            
+        }
+    }    
+}
+else {
+    <h1 class="text-danger text-center">No professors available to assign</h1>
+}
+<a asp-action="Index" asp-controller="Courses" class="btn btn-outline-light">
+    Back To Courses List
+</a>

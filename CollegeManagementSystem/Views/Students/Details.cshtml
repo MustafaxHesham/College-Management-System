@@ -1,0 +1,37 @@
+﻿@model Student
+@{
+    ViewData["Title"] = "Details Student";
+}
+
+@if (Model != null) {
+    <dl>
+            <dt>@Html.DisplayNameFor(p => p.Id)</dt>
+            <dd>@Html.DisplayFor(p => p.Id)</dd>
+
+            <dt>@Html.DisplayNameFor(p => p.Name)</dt>
+            <dd>@Html.DisplayFor(p => p.Name)</dd>
+
+            <dt>@Html.DisplayNameFor(p => p.SSN)</dt>
+            <dd>@Html.DisplayFor(p => p.SSN)</dd>
+
+            <dt>@Html.DisplayNameFor(p => p.Age)</dt>
+            <dd>@Html.DisplayFor(p => p.Age)</dd>
+
+            <dt>@Html.DisplayNameFor(s => s.GPA)</dt>
+            <dd>@Html.DisplayFor(s => s.GPA)</dd>
+
+            <dt>@Html.DisplayNameFor(s => s.Level)</dt>
+            <dd>@Html.DisplayFor(s => s.Level)</dd>
+
+            <dt>@Html.DisplayNameFor(p => p.imageUrl)</dt>
+            <dd>
+                <img src="@Html.DisplayFor(p => p.imageUrl)" />
+            </dd>
+    </dl>
+}
+else {
+    <h1 class="text-danger text-center">Student Not Found :(</h1>
+}
+            <a asp-action="Index" asp-controller="Students" class="btn btn-outline-light">
+                Back To Students List
+            </a>

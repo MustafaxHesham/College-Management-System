@@ -1,0 +1,24 @@
+﻿@model Course
+@if (Model != null) {
+<h1>Students Not Get the grades</h1>
+@foreach(var item in Model.Students) {
+    if(item.Grade == null || item.Grade == 0)
+    {
+        <div>
+        <form asp-action="EvaluteResultToStudent" asp-controller="Courses" method="post">
+            <input hidden name="cid" value="@Model.Id" />
+            <input hidden name="sid" value="@item.StudentId" />
+            <input class="form-control" name="Grade" />
+            <button type="submit" class="btn btn-dark text-light"> Submit Grade </button>
+        </form>
+            <p>@item.student.Name</p>
+        </div>
+    }    
+}
+}
+else{
+    <h1 class="text-danger">Not Found Course</h1>
+}
+<a asp-action="Index" asp-controller="Courses" class="btn btn-outline-light">
+    Back To Courses List
+</a>

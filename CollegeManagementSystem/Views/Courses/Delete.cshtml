@@ -1,0 +1,36 @@
+﻿@model Course
+@{
+    ViewData["Title"] = "Delete Course";
+}
+
+@if (Model != null) {
+    <dl>
+            <dt>@Html.DisplayNameFor(c => c.Id)</dt>
+            <dd>@Html.DisplayFor(c => c.Id)</dd>
+
+            <dt>@Html.DisplayNameFor(c => c.Name)</dt>
+            <dd>@Html.DisplayFor(c => c.Name)</dd>
+
+            <dt>@Html.DisplayNameFor(c => c.Description)</dt>
+            <dd>@Html.DisplayFor(c => c.Description)</dd>
+
+            <dt>@Html.DisplayNameFor(c => c.Code)</dt>
+            <dd>@Html.DisplayFor(c => c.Code)</dd>
+
+            <dt>@Html.DisplayNameFor(c => c.hours)</dt>
+            <dd>@Html.DisplayFor(c => c.hours)</dd>
+
+            <a asp-action="Index" asp-controller="Courses" class="btn btn-outline-light">
+                Back To Courses List
+            </a>
+            <form asp-action="Delete" asp-controller="Courses" asp-route-id="@Model.Id"
+                 method="post">
+                <input type="hidden" asp-for="Id" />
+                <button type="submit" class="btn btn-danger">Delete Course</button>
+            </form>
+    </dl>
+
+}
+else {
+    <h1 class="text-danger"> NotFound </h1>
+}
