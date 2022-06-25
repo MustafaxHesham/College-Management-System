@@ -7,7 +7,6 @@ namespace CollegeManagementSystem.Models
     {
         [Required(ErrorMessage = "Salary is required.")]
         [Range(0, double.MaxValue, ErrorMessage = "Salary must be positive number.")]
-        [Display(Name = "Salary")]
         public double Salary { get; set; }
 
         [Display(Name = "Specialization")]
